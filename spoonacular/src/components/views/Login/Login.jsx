@@ -1,29 +1,52 @@
 import React from "react";
 import { useFormik } from "formik";
+import { useNavigate, Link } from "react-router-dom";
+import * as Yup from "yup";
+import { swal } from "../../../utils/swal";
+
+//const { REACT_APP_API_ENDPOINT: API_ENDPOINT } = process.env;
 
 export const Login = () => {
+  const navigate = useNavigate();
+
   const initialValues = {
     email: "",
     password: "",
   };
 
-  const validate = (values) => {
-    const errors = {};
+  const required = "* Campo obligatorio";
 
-    if (!values.email) {
-      errors.email = "El mail es requerido";
-    }
-    if (!values.password) {
-      errors.password = "La contraseña es requerida";
-    }
-    return errors;
-  };
+  const validationSchema = () =>
+    Yup.object().shape({
+      email: Yup.string().email("Mail inválido").required(required),
+      password: Yup.string().required(required),
+    });
 
   const onSubmit = () => {
-    localStorage.setItem("logged", "yes");
+    const { email, password } = values;
+    fetch(`https://reqres.in/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.token === "QpwL5tke4Pnpja7X4") {
+          localStorage.setItem("token", data?.token);
+          localStorage.setItem("email", data?.email);
+          navigate("/menu", { replace: true });
+        } else {
+          swal();
+        }
+      });
   };
 
-  const formik = useFormik({ initialValues, validate, onSubmit });
+  const formik = useFormik({ initialValues, validationSchema, onSubmit });
 
   const { handleSubmit, handleChange, values, errors } = formik;
 

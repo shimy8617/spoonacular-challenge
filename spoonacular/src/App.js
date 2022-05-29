@@ -19,9 +19,9 @@ export const App = () => (
       <Route
         path="/menu"
         element={
-          <RequireAuth>
-            <Menu />
-          </RequireAuth>
+          //<RequireAuth>
+          <Menu />
+          //</RequireAuth>
         }
       />
       <Route path="/login" element={<Login />} />

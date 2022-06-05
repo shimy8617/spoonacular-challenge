@@ -119,6 +119,12 @@
     margin: 0;
 }
 
+.card-body button {
+    border: none; 
+    background-color: white;
+    font-weight: bolder;
+}
+
 @media (min-width:900px) {
     #menu {
         flex-direction: row;

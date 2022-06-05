@@ -1,0 +1,12 @@
+.container-fluid a{
+    color: #000
+}
+
+.container-fluid a:hover{
+    color: #555
+}
+
+.logout {
+    cursor: pointer;
+    padding-right: 10px;
+}

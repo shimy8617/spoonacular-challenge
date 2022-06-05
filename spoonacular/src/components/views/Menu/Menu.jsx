@@ -46,6 +46,7 @@ export const Menu = () => {
                   >
                     View Detail
                   </Link>
+                  <button>+</button>
                 </div>
               </div>
             </div>

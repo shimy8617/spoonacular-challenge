@@ -1,4 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import "./Header.style.css";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -11,9 +14,46 @@ export const Header = () => {
 
   return (
     <header>
-      <div>Menú</div>
-      <div>{localStorage.getItem("userName")}</div>
-      <div onClick={handleLogout}>x</div>
+      <nav className="navbar navbar-expand-lg bg-light">
+        <div>{localStorage.getItem("userName")}</div>
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/home">
+            Home
+          </Link>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/menu"
+                >
+                  Menu
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/mylist">
+                  My List
+                </Link>
+              </li>
+            </ul>
+            <form className="d-flex" role="search">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+        <div className="logout" onClick={handleLogout}>
+          Logout
+        </div>
+      </nav>
     </header>
   );
 };

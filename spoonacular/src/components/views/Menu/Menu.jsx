@@ -8,7 +8,8 @@ import API_KEY from "../../../api/apiKey";
 
 import "./Menu.styles.css";
 
-export const Menu = () => {
+export const Menu = (props) => {
+  console.log(props);
   //const id = 1697787;
 
   const [menuList, setMenuList] = useState([]);
@@ -26,8 +27,6 @@ export const Menu = () => {
       });
   }, [setMenuList]);
 
-  console.log(menuList);
-
   return (
     <>
       <Header />
@@ -37,7 +36,10 @@ export const Menu = () => {
             <div className="col-3" key={idx}>
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">{onePlate.title}</h5>
+                  <div className="card-body-header">
+                    <h5 className="card-title">{onePlate.title}</h5>
+                    <button className="add-btn">+</button>
+                  </div>
                   <img src={onePlate.image} alt="" className="card-img-top" />
                   <p className="card-text">{onePlate.diet}</p>
                   <Link
@@ -46,7 +48,6 @@ export const Menu = () => {
                   >
                     View Detail
                   </Link>
-                  <button>+</button>
                 </div>
               </div>
             </div>

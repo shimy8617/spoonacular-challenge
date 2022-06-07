@@ -1,6 +1,6 @@
 import { Header } from "../../Header/Header";
 
-export const MyList = () => {
+export const MyList = (props) => {
   return (
     <>
       <Header />

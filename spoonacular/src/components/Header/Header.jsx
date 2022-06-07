@@ -1,15 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import "./Header.style.css";
 
 export const Header = () => {
-  const navigate = useNavigate();
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
-    navigate("/login", { replace: true });
+    Redirect("/login", { replace: true });
   };
 
   return (

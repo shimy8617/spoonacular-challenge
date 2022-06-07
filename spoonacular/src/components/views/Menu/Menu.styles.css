@@ -119,10 +119,28 @@
     margin: 0;
 }
 
-.card-body button {
-    border: none; 
-    background-color: white;
-    font-weight: bolder;
+.card-body-header{
+    display: inline;
+}
+
+.add-btn {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    background-color: #cbcbcb;
+    border: none;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 15px;
+    top:15px;
+    font-size: 20px;
+    color: white;
+}
+
+.card-title {
+    font-size: 18px
 }
 
 @media (min-width:900px) {

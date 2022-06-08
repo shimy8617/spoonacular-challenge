@@ -1,12 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Redirect } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import * as Yup from "yup";
 import { swal } from "../../../utils/swal";
 
 //const { REACT_APP_API_ENDPOINT: API_ENDPOINT } = process.env;
 
 export const Login = () => {
+  const history = useHistory();
 
   const initialValues = {
     email: "",
@@ -38,7 +39,7 @@ export const Login = () => {
         if (data.token === "QpwL5tke4Pnpja7X4") {
           localStorage.setItem("token", data?.token);
           localStorage.setItem("email", data?.email);
-          Redirect("/menu", { replace: true });
+          history.push("/menu", { replace: true });
         } else {
           swal();
         }
@@ -49,7 +50,11 @@ export const Login = () => {
 
   const { handleSubmit, handleChange, values, errors } = formik;
 
+  let token = sessionStorage.getItem("token");
+
   return (
+    <>
+      {token && <Redirect to="/menu" />}
     <div className="container">
       <form onSubmit={handleSubmit}>
         <h1>Iniciar sesión</h1>
@@ -78,5 +83,6 @@ export const Login = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };

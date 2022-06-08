@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import swAlert from "@sweetalert/with-react";
 import { Header } from "../../Header/Header";
-import { Card } from "../../Card/Card";
+//import { Card } from "../../Card/Card";
 import API_KEY from "../../../api/apiKey";
 
 import "./Menu.styles.css";

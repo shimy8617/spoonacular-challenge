@@ -1,6 +1,7 @@
 {
   "name": "spoonacular",
   "version": "0.1.0",
+  "homepage":".",
   "private": true,
   "dependencies": {
     "@sweetalert/with-react": "^0.1.1",

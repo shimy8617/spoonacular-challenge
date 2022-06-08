@@ -25,7 +25,9 @@ export const App = () => {
   return (
     <>
       <Switch>
-        <Route path="/login" element={<Login />} />
+        <Route path="/">
+          <Login />
+        </Route>
         {/* <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error404 />} /> */}
         <Route

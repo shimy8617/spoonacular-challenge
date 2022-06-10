@@ -36,10 +36,10 @@ export const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (data.token === "QpwL5tke4Pnpja7X4") {
           localStorage.setItem("token", data?.token);
-          localStorage.setItem("email", data?.email);
-          history.push("/menu", { replace: true });
+          history.push("/menu");
         } else {
           swal();
         }
@@ -54,7 +54,7 @@ export const Login = () => {
 
   return (
     <>
-      {token && <Redirect to="/menu" />}
+      {/*{token && <Redirect to="/menu" />}*/}
     <div className="container">
       <form onSubmit={handleSubmit}>
         <h1>Iniciar sesión</h1>

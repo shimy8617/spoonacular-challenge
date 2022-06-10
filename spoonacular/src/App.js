@@ -33,7 +33,7 @@ export const App = () => {
         <Route
           path="/menu"
           render={(props) => (
-            <Menu addOrRemoveFromList={addOrRemoveFromList} {...props} />
+            <RequireAuth><Menu addOrRemoveFromList={addOrRemoveFromList} {...props} /></RequireAuth>
           )}
         />
         {/* 

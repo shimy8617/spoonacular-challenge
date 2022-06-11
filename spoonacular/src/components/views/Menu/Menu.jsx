@@ -47,6 +47,7 @@ export const Menu = (props) => {
                   <button
                     className="add-btn"
                     onClick={props.addOrRemoveFromList}
+                    data-recipe-id={onePlate.id}
                   >
                     +
                   </button>

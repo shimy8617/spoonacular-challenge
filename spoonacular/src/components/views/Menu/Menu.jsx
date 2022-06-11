@@ -9,13 +9,12 @@ import API_KEY from "../../../api/apiKey";
 import "./Menu.styles.css";
 
 export const Menu = (props) => {
-  console.log(props);
   //const id = 1697787;
 
   const [menuList, setMenuList] = useState([]);
 
   useEffect(() => {
-    const endPoint = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&includeNutrition=false&diet`;
+    const endPoint = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&includeNutrition=false&diet&addRecipeInformation=true`;
     axios
       .get(endPoint)
       .then((response) => {
@@ -27,6 +26,14 @@ export const Menu = (props) => {
       });
   }, [setMenuList]);
 
+  const [showMore, setShowMore] = useState(false);
+
+  const limitString = (str) => {
+    if (str.length > 170)
+      return { string: str.slice(0, 167).concat("..."), addButton: true };
+    return { string: str, addButton: false };
+  };
+
   return (
     <>
       <Header />
@@ -36,12 +43,28 @@ export const Menu = (props) => {
             <div className="col-3" key={idx}>
               <div className="card">
                 <div className="card-body">
-                  <div className="card-body-header">
-                    <h5 className="card-title">{onePlate.title}</h5>
-                    <button className="add-btn">+</button>
-                  </div>
+                  <h5 className="card-title">{onePlate.title}</h5>
+                  <button
+                    className="add-btn"
+                    onClick={props.addOrRemoveFromList}
+                  >
+                    +
+                  </button>
                   <img src={onePlate.image} alt="" className="card-img-top" />
-                  <p className="card-text">{onePlate.diet}</p>
+                  {!showMore && <p>{limitString(onePlate.summary).string}</p>}
+                  {showMore && (
+                    <>
+                      <p>{onePlate.summary}</p>
+                      <button type="button" onClick={() => setShowMore(false)}>
+                        Ver Menos
+                      </button>
+                    </>
+                  )}
+                  {!showMore && limitString(onePlate.summary).addButton && (
+                    <button type="button" onClick={() => setShowMore(true)}>
+                      Ver más
+                    </button>
+                  )}
                   <Link
                     to={`/detail?plateID=${onePlate.id}`}
                     className="btn btn-primary"

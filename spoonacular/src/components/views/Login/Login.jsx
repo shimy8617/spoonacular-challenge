@@ -36,7 +36,6 @@ export const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.token === "QpwL5tke4Pnpja7X4") {
           localStorage.setItem("token", data?.token);
           history.push("/menu");

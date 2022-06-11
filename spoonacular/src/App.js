@@ -18,8 +18,15 @@ const RequireAuth = ({ children }) => {
 };
 
 export const App = () => {
-  const addOrRemoveFromList = () => {
-    console.log("it worked");
+  const addOrRemoveFromList = (e) => {
+    const btn = e.currentTarget;
+    const parent = btn.parentElement;
+    const imgURL = parent.querySelector("img").getAttribute("src");
+    const title = parent.querySelector("h5").innerText;
+    const overview = parent.querySelector("p").innerText;
+    console.log(imgURL);
+    console.log(title);
+    console.log(overview);
   };
 
   return (

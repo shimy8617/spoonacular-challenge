@@ -20,14 +20,15 @@ const RequireAuth = ({ children }) => {
 export const App = () => {
   const favRecipes = localStorage.getItem("favs");
 
-  let tempRecipeInFavs;
+  let tempRecipesInFavs;
 
   if (favRecipes === null) {
-    tempRecipeInFavs = [];
+    tempRecipesInFavs = [];
   } else {
+    tempRecipesInFavs = JSON.parse(favRecipes);
   }
 
-  console.log(tempRecipeInFavs);
+  console.log(tempRecipesInFavs);
 
   const addOrRemoveFromList = (e) => {
     const btn = e.currentTarget;
@@ -41,7 +42,20 @@ export const App = () => {
       overview,
       id: btn.dataset.recipeId,
     };
-    console.log(recipeData);
+    let recipeIsInArray = tempRecipesInFavs.find((oneRecipe) => {
+      return oneRecipe.id === recipeData.id;
+    });
+    if (!recipeIsInArray) {
+      tempRecipesInFavs.push(recipeData);
+      localStorage.setItem("favs", JSON.stringify(tempRecipesInFavs));
+      console.log("se agrego la receta");
+    } else {
+      let recipesLeft = tempRecipesInFavs.filter((oneRecipe) => {
+        return oneRecipe.id !== recipeData.id;
+      });
+      localStorage.setItem("favs", JSON.stringify(recipesLeft));
+      console.log("Se elimino de la lista");
+    }
   };
 
   return (

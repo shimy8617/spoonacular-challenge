@@ -1,4 +1,6 @@
 import { Switch, Route, Redirect } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 import { Login } from "./components/views/Login/Login";
 import { Register } from "./components/Register/Register";
 import { Menu } from "./components/views/Menu/Menu";
@@ -18,6 +20,17 @@ const RequireAuth = ({ children }) => {
 };
 
 export const App = () => {
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    const favsInLocal = localStorage.getItem("favs");
+
+    if (favsInLocal != null) {
+      const favsArray = JSON.parse(favsInLocal);
+      setList(favsArray);
+    }
+  }, []);
+
   const favRecipes = localStorage.getItem("favs");
 
   let tempRecipesInFavs;
@@ -48,18 +61,21 @@ export const App = () => {
     if (!recipeIsInArray) {
       tempRecipesInFavs.push(recipeData);
       localStorage.setItem("favs", JSON.stringify(tempRecipesInFavs));
+      setList(tempRecipesInFavs);
       console.log("se agrego la receta");
     } else {
       let recipesLeft = tempRecipesInFavs.filter((oneRecipe) => {
         return oneRecipe.id !== recipeData.id;
       });
       localStorage.setItem("favs", JSON.stringify(recipesLeft));
+      setList(recipesLeft);
       console.log("Se elimino de la lista");
     }
   };
 
   return (
     <>
+      <Header list={list} />
       <Switch>
         <Route exact path="/login">
           <Login />
@@ -78,7 +94,11 @@ export const App = () => {
         <Route
           path="/mylist"
           render={(props) => (
-            <MyList addOrRemoveFromList={addOrRemoveFromList} {...props} />
+            <MyList
+              list={list}
+              addOrRemoveFromList={addOrRemoveFromList}
+              {...props}
+            />
           )}
         />
       </Switch>

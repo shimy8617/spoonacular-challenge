@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Header.style.css";
 
-export const Header = () => {
+export const Header = (props) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
@@ -33,6 +33,11 @@ export const Header = () => {
                 <Link className="nav-link" to="/mylist">
                   My List
                 </Link>
+              </li>
+              <li className="nav-item">
+                <span className="text-success">
+                  Recipes in list: {props.list.length}
+                </span>
               </li>
             </ul>
             <form className="d-flex" role="search">

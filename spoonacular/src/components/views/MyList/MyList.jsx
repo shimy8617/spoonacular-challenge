@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { Header } from "../../Header/Header";
 
-export const MyList = () => {
-  const [list, setList] = useState([]);
+export const MyList = (props) => {
+  /* const [list, setList] = useState([]);
 
   useEffect(() => {
     const favsInLocal = localStorage.getItem("favs");
@@ -12,7 +11,7 @@ export const MyList = () => {
       const favsArray = JSON.parse(favsInLocal);
       setList(favsArray);
     }
-  }, []);
+  }, []); */
 
   const [showMore, setShowMore] = useState(false);
 
@@ -24,15 +23,21 @@ export const MyList = () => {
 
   return (
     <>
-      <Header />
       <div className="row">
-        {list.map((oneRecipe, idx) => {
+        {props.list.map((oneRecipe, idx) => {
           return (
             <div className="col-3" key={idx}>
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{oneRecipe.title}</h5>
                   <img src={oneRecipe.imgURL} alt="" className="card-img-top" />
+                  <button
+                    className="add-btn"
+                    onClick={props.addOrRemoveFromList}
+                    data-recipe-id={oneRecipe.id}
+                  >
+                    +
+                  </button>
                   {!showMore && <p>{limitString(oneRecipe.overview).string}</p>}
                   {showMore && (
                     <>

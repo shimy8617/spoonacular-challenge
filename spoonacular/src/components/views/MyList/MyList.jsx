@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export const MyList = (props) => {
@@ -24,6 +25,7 @@ export const MyList = (props) => {
   return (
     <>
       <div className="row">
+        {!props.list.length && <div>No recipes added to the list</div>}
         {props.list.map((oneRecipe, idx) => {
           return (
             <div className="col-3" key={idx}>
@@ -52,6 +54,12 @@ export const MyList = (props) => {
                       Ver más
                     </button>
                   )}
+                  <Link
+                    to={`/detail?plateID=${oneRecipe.id}`}
+                    className="btn btn-primary"
+                  >
+                    View Detail
+                  </Link>
                 </div>
               </div>
             </div>

@@ -36,7 +36,9 @@ export const Header = (props) => {
               </li>
               <li className="nav-item">
                 <span className="text-success">
-                  Recipes in list: {props.list.length}
+                  {props.list.length > 0 && (
+                    <>Recipes in list: {props.list.length}</>
+                  )}
                 </span>
               </li>
             </ul>

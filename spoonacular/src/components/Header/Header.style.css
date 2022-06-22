@@ -11,6 +11,6 @@
     padding-right: 10px;
 }
 
-.text-success{
-    padding-left: 20px;    
+.nav-item .text-success{
+    margin: 0 0 0 30px;
 }

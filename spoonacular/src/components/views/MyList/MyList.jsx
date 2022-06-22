@@ -42,7 +42,7 @@ export const MyList = (props) => {
                     data-recipe-id={oneRecipe.id}
                   >
                     +
-                  </button>
+                  </button>{/* 
                   {!showMore && <p>{limitString(oneRecipe.overview).string}</p>}
                   {showMore && (
                     <>
@@ -56,7 +56,7 @@ export const MyList = (props) => {
                     <button type="button" onClick={() => setShowMore(true)}>
                       Ver más
                     </button>
-                  )}
+                  )} */}
                   <Link
                     to={`/detail?plateID=${oneRecipe.id}`}
                     className="btn btn-primary"

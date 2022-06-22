@@ -14,25 +14,12 @@ var title = {
   color: "rgb(237,78,110)",
 };
 
-var imgStyle = {
-  width: "100%",
-  height: "200px",
-  border: "1px solid transparent",
-  transition: "1s",
-};
-
-var overflow = {
-  overflow: "hidden",
-};
-
 var linkStyle = {
-  border: "1px solid transparent",
-  padding: "10px 20px",
   "font-size": "16px",
   "border-radius": "10%",
   "background-color": "rgb(237,78,110)",
-  color: "white",
-  "text-decoration": "none",
+  whitecolor: "white",
+  textDecoration: "none",
   "list-style": "none",
 };
 
@@ -71,12 +58,17 @@ export const Menu = (props) => {
               return (
                 <div className="col" key={idx}>
                   <div className="card">
-                    <div className="cours2" style={{ overflow }}>
+                    <div className="cours2" style={{ overflow: "hidden" }}>
                       <img
                         src={onePlate.image}
                         alt=""
                         className="hover"
-                        style={{ imgStyle }}
+                        style={{
+                          width: "100%",
+                          height: "200px",
+                          border: "1px solid transparent",
+                          transition: "1s",
+                        }}
                       />
 
                       <div className="title">
@@ -121,7 +113,12 @@ export const Menu = (props) => {
                         <Link
                           to={onePlate.spoonacularSourceUrl}
                           className="cou"
-                          style={{ linkStyle }}
+                          style={{
+                            border: "1px solid transparent",
+                            padding: "10px 20px",
+                            color: linkStyle.whitecolor,
+                            textDecoration: linkStyle.textDecoration,
+                          }}
                         >
                           View Detail
                         </Link>

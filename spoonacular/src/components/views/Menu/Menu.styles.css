@@ -59,10 +59,6 @@
     font-weight: 700;
     margin: 0 0 0.2rem;
 }
-.card img {
-    width: 100%;
-    border-radius: 10px
-}
 
 #menu .card button {
     border-radius: 4px;
@@ -104,16 +100,36 @@
     display: flex;
     width: 25px;
     height: 25px;
-    background-color: #cbcbcb;
+    background-color: transparent;
     border: none;
     border-radius: 30px;
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 15px;
-    top:15px;
-    font-size: 20px;
-    color: white;
+    right: 10px;
+    top:20px;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+}
+
+.add-btn:hover {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    background-color:  rgb(237, 78, 110, 0.8);
+    border: none;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    top:20px;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+}
+
+.add-btn:hover span {
+    margin-bottom: 4px;
 }
 
 .card-title {
@@ -124,11 +140,13 @@
     position: relative;
     margin-bottom: 50px;
     margin-top: 30px;
+    border-radius: 10px;
 }
 
 .title {
     -border: 1px solid red;
     position: absolute;
+    width: 100%;
     top: -100px;
     opacity: 0;
     -bottom: 100px;
@@ -136,7 +154,7 @@
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
     padding: 10px;
-    border-radius: 10px
+    border-top-left-radius: 10px
 }
 
 .cours2:hover .title {
@@ -153,7 +171,7 @@
     opacity: 0;
     bottom: -50px;
     background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 10px
+    border-bottom-left-radius: 10px
 }
 
 .cours2:hover .cours4 {
@@ -169,6 +187,7 @@
 .cou:hover {
     background-color: transparent !important;
     color: rgb(237, 78, 110) !important;
+    font-weight: 600;
 }
 
 @media (min-width:900px) {

@@ -57,7 +57,6 @@ export const Menu = (props) => {
             {menuList.map((onePlate, idx) => {
               return (
                 <div className="col" key={idx}>
-                  <div className="card">
                     <div className="cours2" style={{ overflow: "hidden" }}>
                       <img
                         src={onePlate.image}
@@ -75,13 +74,6 @@ export const Menu = (props) => {
                         <h5 className="card-title" style={{ title }}>
                           {onePlate.title}
                         </h5>
-                        <button
-                          className="add-btn"
-                          onClick={props.addOrRemoveFromList}
-                          data-recipe-id={onePlate.id}
-                        >
-                          +
-                        </button>
                       </div>
 
                       {/* {!showMore && (
@@ -122,10 +114,19 @@ export const Menu = (props) => {
                         >
                           View Detail
                         </Link>
+                        <button
+                          className="add-btn"
+                          onClick={props.addOrRemoveFromList}
+                          data-recipe-id={onePlate.id}
+                          title="add to list"
+                        >
+                          <span>
+                          +
+                          </span>
+                        </button>
                       </div>
                     </div>
                   </div>
-                </div>
               );
             })}
           </div>

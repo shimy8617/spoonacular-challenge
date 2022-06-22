@@ -46,13 +46,14 @@ export const App = () => {
   const addOrRemoveFromList = (e) => {
     const btn = e.currentTarget;
     const parent = btn.parentElement;
-    const imgURL = parent.querySelector("img").getAttribute("src");
-    const title = parent.querySelector("h5").innerText;
-    const overview = parent.querySelector("p").innerText;
+    const parentParent = parent.parentElement;
+    const imgURL = parentParent.querySelector("img").getAttribute("src");
+    const title = parentParent.querySelector("h5").innerText;/* 
+    const overview = parentParent.querySelector("p").innerText; */
     const recipeData = {
       imgURL,
       title,
-      overview,
+      /* overview, */
       id: btn.dataset.recipeId,
     };
     let recipeIsInArray = tempRecipesInFavs.find((oneRecipe) => {

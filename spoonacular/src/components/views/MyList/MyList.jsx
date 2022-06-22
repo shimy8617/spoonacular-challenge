@@ -27,6 +27,9 @@ export const MyList = (props) => {
       <div className="row">
         {!props.list.length && <div>No recipes added to the list</div>}
         {props.list.map((oneRecipe, idx) => {
+          console.log(oneRecipe.title)
+          console.log(oneRecipe.imgURL)
+          console.log(oneRecipe.id)
           return (
             <div className="col-3" key={idx}>
               <div className="card">
